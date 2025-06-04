@@ -14,8 +14,14 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f0f0f0;
+  color: #17da41;
+  background-color: rgb(77, 70, 105);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url("portalGun.gif");
+  background-repeat: no-repeat;
+  background-size: 420px 220px;
 }
 
 img {
@@ -33,4 +39,148 @@ a {
 
 a {
   text-decoration: none;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 24px;
+  background: #232323;
+}
+
+nav a {
+  color: #17da41;
+  background: #2b2a2a;
+  border-radius: 24px;
+  padding: 8px 22px;
+  font-size: 1.08rem;
+  margin-left: 8px;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+nav a:hover,
+nav a.active {
+  background: #17da41;
+  color: #232323;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+nav span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 24px;
+}
+
+main {
+  flex: 1;
+  padding: 32px 16px 16px 16px;
+  background: #2b2a2a;
+  border-radius: 8px;
+  text-align: center;
+
+  min-height: 800px;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #232323;
+  border-radius: 40px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+}
+
+.search input[type="text"] {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 30px;
+  width: 220px;
+  font-size: 1.1rem;
+  background: #181818;
+  color: #17da41;
+  outline: none;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.search input[type="text"]::placeholder {
+  color: #17da41;
+}
+
+small,
+h4 {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+footer {
+  background: #fff;
+  border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 16px 0;
+  font-size: 0.95rem;
+  margin-top: 32px;
+}
+
+.grid-2x3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px 32px;
+  margin: 32px auto;
+  width: 90%;
+  height: 500px;
+  justify-items: center;
+  align-items: center;
+}
+
+.grid-item {
+  background: #afe3b3;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: #444;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.grid-item:hover {
+  background: url("portal-rick-and-morty.gif") no-repeat center center;
+  background-size: cover;
+}
+
+.portal-btn {
+  width: 48px;
+  height: 48px;
+  background: url("../styles/ricks-portal-removebg.png") center center/cover
+      no-repeat,
+    #181818;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 8px;
+}
+
+.portal-btn:hover {
+  transform: scale(0.85);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  background-color: #222;
 }
