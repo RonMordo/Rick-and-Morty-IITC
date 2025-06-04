@@ -5,11 +5,6 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-  min-height: 100%;
-}
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -22,23 +17,6 @@ body {
   background-image: url("portalGun.gif");
   background-repeat: no-repeat;
   background-size: 420px 220px;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-button,
-input,
-textarea,
-select,
-a {
-  font: inherit;
-}
-
-a {
-  text-decoration: none;
 }
 
 nav {
@@ -65,7 +43,6 @@ nav a:hover,
 nav a.active {
   background: #17da41;
   color: #232323;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
 }
 
 nav span {
@@ -97,7 +74,6 @@ form {
   background: #232323;
   border-radius: 40px;
   padding: 10px 20px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 
 .search input[type="text"] {
@@ -109,8 +85,7 @@ form {
   background: #181818;
   color: #17da41;
   outline: none;
-  transition: box-shadow 0.2s;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
 }
 
 .search input[type="text"]::placeholder {
@@ -127,11 +102,12 @@ h4 {
 }
 
 footer {
-  background: #fff;
-  border-top: 1px solid #ddd;
+  background: #232323;
+  border-top: 1px solid #444;
+  color: #17da41;
   text-align: center;
   padding: 16px 0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   margin-top: 32px;
 }
 
@@ -174,13 +150,13 @@ footer {
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+
   margin-left: 8px;
 }
 
 .portal-btn:hover {
   transform: scale(0.85);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+
   background-color: #222;
 }
