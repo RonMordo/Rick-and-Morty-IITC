@@ -7,34 +7,38 @@
     <link rel="stylesheet" href="../styles/main.css" />
   </head>
   <body>
-    <nav>
-      <span>Rick and Morty WIKI</span>
-      <a href="characters.html">Characters</a>
-      <a href="episodes.html">Episodes</a>
-      <a href="locations.html">Locations</a>
-    </nav>
-    <small
-      >Search across the multiverse for your favorite character, location, or
-      episode...</small
-    >
-    <form>
-      <div class="search">
-        <input type="text" placeholder="Search" />
-        <button class="portal-btn" type="button" title="search"></button>
+    <header>
+      <div class="header-title">
+        <span>Rick and Morty WIKI</span>
       </div>
-    </form>
+      <nav>
+        <a href="characters.html">Characters</a>
+        <a href="episodes.html">Episodes</a>
+        <a href="locations.html">Locations</a>
+      </nav>
+    </header>
     <main>
+      <section class="search-container">
+        <p class="search-par">
+          Search across the multiverse for your favorite character, location, or
+          episode...
+        </p>
+        <form>
+          <div class="search">
+            <input type="text" placeholder="Search" />
+            <button class="portal-btn" type="button" title="search"></button>
+          </div>
+        </form>
+      </section>
       <h1>Locations</h1>
       <p>Explore all locations from the Rick and Morty universe.</p>
-      <div class="grid-2x3">
-        <div class="grid-item">Item 1</div>
-        <div class="grid-item">Item 2</div>
-        <div class="grid-item">Item 3</div>
-        <div class="grid-item">Item 4</div>
-        <div class="grid-item">Item 5</div>
-        <div class="grid-item">Item 6</div>
+      <div id="grid" class="grid-2x3"></div>
+      <div class="pagination">
+        <button id="prev">Previous</button>
+        <button id="next">Next</button>
       </div>
     </main>
     <footer>&copy; 2025 RON & Liel inc. All rights reserved.</footer>
+    <script type="module" src="../scripts/locations-list.js"></script>
   </body>
 </html>
