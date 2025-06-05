@@ -1,6 +1,7 @@
 const pageData = {
   info: null,
   charactersData: null,
+  page: 1,
 };
 
 /**
@@ -11,6 +12,8 @@ const pageData = {
  */
 function updateUI() {
   const grid = document.querySelector(".grid-2x3");
+  grid.innerHTML = "";
+  if (!pageData.charactersData) return;
   pageData.charactersData.forEach((character) => {
     const gridItem = document.createElement("div");
     gridItem.className = "grid-item";
@@ -25,15 +28,6 @@ function updateUI() {
     `;
     grid.appendChild(gridItem);
   });
-  // TODO: Implement the UI update
-  // 1. Get the grid element
-  // 2. Clear existing content
-  // 3. For each character in data.results:
-  //    - Create a card element
-  //    - Add character image, name, status, species, location
-  //    - Make the card clickable (link to character-detail.html)
-  // 4. Update pagination UI
-  throw new Error("updateUI not implemented");
 }
 
 /**
@@ -41,7 +35,7 @@ function updateUI() {
  */
 
 function loadCharacters() {
-  const url = `https://rickandmortyapi.com/api/character`;
+  const url = `https://rickandmortyapi.com/api/character?page=${pageData.page}`;
 
   fetch(url)
     .then((response) => {
@@ -53,11 +47,10 @@ function loadCharacters() {
     .then((data) => {
       pageData.charactersData = data.results;
       pageData.info = data.info;
-      console.log(pageData);
       updateUI();
     })
     .catch((error) => {
-      const grid = document.getElementsByClassName("grid");
+      const grid = document.querySelector(".grid-2x3");
       grid.innerHTML = `<p style="color:red;">${error.message}</p>`;
     });
 }
@@ -68,3 +61,17 @@ function loadCharacters() {
 // 3. Search input with debounce
 // 4. Call loadCharacters() on page load
 document.addEventListener("DOMContentLoaded", loadCharacters);
+
+document.getElementById("next").addEventListener("click", () => {
+  if (pageData.info?.next) {
+    pageData.page++;
+    loadCharacters();
+  }
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+  if (pageData.page > 1) {
+    pageData.page--;
+    loadCharacters();
+  }
+});

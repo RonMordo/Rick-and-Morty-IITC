@@ -1,6 +1,7 @@
 const locationData = {
   info: null,
   locationsData: null,
+  page: 1,
 };
 
 function updateUI() {
@@ -23,7 +24,7 @@ function updateUI() {
 }
 
 function loadLocations() {
-  const url = `https://rickandmortyapi.com/api/location`;
+  const url = `https://rickandmortyapi.com/api/location?page=${locationData.page}`;
 
   fetch(url)
     .then((response) => {
@@ -33,7 +34,6 @@ function loadLocations() {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       locationData.locationsData = data.results;
       locationData.info = data.info;
       updateUI();
@@ -45,3 +45,17 @@ function loadLocations() {
 }
 
 document.addEventListener("DOMContentLoaded", loadLocations);
+
+document.getElementById("next").addEventListener("click", () => {
+  if (locationData.info?.next) {
+    locationData.page++;
+    loadLocations();
+  }
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+  if (locationData.page > 1) {
+    locationData.page--;
+    loadLocations();
+  }
+});

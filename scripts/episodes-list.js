@@ -1,6 +1,7 @@
 const episodeData = {
   info: null,
   episodesData: null,
+  page: 1,
 };
 
 function updateUI() {
@@ -23,7 +24,7 @@ function updateUI() {
 }
 
 function loadEpisodes() {
-  const url = `https://rickandmortyapi.com/api/episode`;
+  const url = `https://rickandmortyapi.com/api/episode?page=${episodeData.page}`;
 
   fetch(url)
     .then((response) => {
@@ -33,7 +34,6 @@ function loadEpisodes() {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
       episodeData.episodesData = data.results;
       episodeData.info = data.info;
       updateUI();
@@ -45,3 +45,17 @@ function loadEpisodes() {
 }
 
 document.addEventListener("DOMContentLoaded", loadEpisodes);
+
+document.getElementById("next").addEventListener("click", () => {
+  if (episodeData.info?.next) {
+    episodeData.page++;
+    loadEpisodes();
+  }
+});
+
+document.getElementById("prev").addEventListener("click", () => {
+  if (episodeData.page > 1) {
+    episodeData.page--;
+    loadEpisodes();
+  }
+});
