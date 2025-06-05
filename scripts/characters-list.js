@@ -1,7 +1,6 @@
-const state = {
-  page: 1,
-  data: null,
-  search: "",
+const pageData = {
+  info: null,
+  charactersData: null,
 };
 
 /**
@@ -10,7 +9,22 @@ const state = {
  * @param {Array} data.results - Array of character objects
  * @param {Object} data.info - Pagination information
  */
-function updateUI(data) {
+function updateUI() {
+  const grid = document.querySelector(".grid-2x3");
+  pageData.charactersData.forEach((character) => {
+    const gridItem = document.createElement("div");
+    gridItem.className = "grid-item";
+    gridItem.innerHTML = `    
+      <img src='${character.image}'/>
+      <div class='char-info'>
+        <p>${character.name}</p>
+        <p>${character.status}</p>
+        <p>${character.species}</p>
+        <p>${character.location.name}</p>
+      </div>
+    `;
+    grid.appendChild(gridItem);
+  });
   // TODO: Implement the UI update
   // 1. Get the grid element
   // 2. Clear existing content
@@ -37,10 +51,10 @@ function loadCharacters() {
       return response.json();
     })
     .then((data) => {
-      state.data = data;
-      console.log(data);
-
-      updateUI(data);
+      pageData.charactersData = data.results;
+      pageData.info = data.info;
+      console.log(pageData);
+      updateUI();
     })
     .catch((error) => {
       const grid = document.getElementsByClassName("grid");
