@@ -53,4 +53,4 @@ function loadCharacters() {
 // 2. Next page button click
 // 3. Search input with debounce
 // 4. Call loadCharacters() on page load
-document.addEventListener("DOMContetLoaded", loadCharacters);
+document.addEventListener("DOMContentLoaded", loadCharacters);

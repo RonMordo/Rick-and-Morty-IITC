@@ -1,4 +1,10 @@
-/* Base styles */
+@font-face {
+  font-family: "Get Schwifty";
+  src: url("../styles/get-schwifty.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +24,19 @@ body {
   background-repeat: no-repeat;
   background-size: 420px 220px;
 }
-
+h1 {
+  font-family: "Get Schwifty", Arial, sans-serif;
+  font-size: 5.5rem;
+  letter-spacing: 4px;
+  color: rgba(18, 175, 201, 255);
+  margin-bottom: 16px;
+  word-spacing: 30px;
+  text-shadow: -3px -3px 0 rgba(207, 226, 99, 255),
+    3px -3px 0 rgba(207, 226, 99, 255), -3px 3px 0 rgba(207, 226, 99, 255),
+    3px 3px 0 rgba(207, 226, 99, 255), 0px 3px 0 rgba(207, 226, 99, 255),
+    3px 0px 0 rgba(207, 226, 99, 255), -3px 0px 0 rgba(207, 226, 99, 255),
+    0px -3px 0 rgba(207, 226, 99, 255);
+}
 nav {
   display: flex;
   align-items: center;
@@ -126,6 +144,8 @@ footer {
 }
 
 .grid-item {
+  position: relative;
+  overflow: hidden;
   background: #afe3b3;
   border-radius: 8px;
   display: flex;
@@ -138,9 +158,19 @@ footer {
   box-sizing: border-box;
 }
 
-.grid-item:hover {
+.grid-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   background: url("portal-rick-and-morty.gif") no-repeat center center;
-  background-size: cover;
+  background-size: 100%;
+  transform: scale(0);
+  transition: transform 0.3s ease-in, opacity 0.3s;
+}
+
+.grid-item:hover::after {
+  transform: scale(1);
+  opacity: 1;
 }
 
 .portal-btn {
