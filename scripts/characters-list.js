@@ -1,3 +1,5 @@
+const baseUrl = `https://rickandmortyapi.com/api/character`;
+
 const pageData = {
   info: null,
   charactersData: null,
@@ -11,22 +13,22 @@ const pageData = {
  * @param {Object} data.info - Pagination information
  */
 function updateUI() {
-  const grid = document.querySelector(".grid-2x3");
-  grid.innerHTML = "";
-  if (!pageData.charactersData) return;
+  const charContainer = document.querySelector(".char-container");
+  charContainer.innerHTML = "";
   pageData.charactersData.forEach((character) => {
-    const gridItem = document.createElement("div");
-    gridItem.className = "grid-item";
-    gridItem.innerHTML = `    
+    const flexItem = document.createElement("div");
+    flexItem.className = "flex-item";
+    flexItem.innerHTML = `    
       <img src='${character.image}'/>
       <div class='char-info'>
         <p>${character.name}</p>
         <p>${character.status}</p>
         <p>${character.species}</p>
         <p>${character.location.name}</p>
+        <a href='${character.url}'>Info</a>
       </div>
     `;
-    grid.appendChild(gridItem);
+    charContainer.appendChild(flexItem);
   });
 }
 
@@ -50,8 +52,8 @@ function loadCharacters() {
       updateUI();
     })
     .catch((error) => {
-      const grid = document.querySelector(".grid-2x3");
-      grid.innerHTML = `<p style="color:red;">${error.message}</p>`;
+      const charContainer = document.getElementsByClassName("char-container");
+      charContainer.innerHTML = `<p style="color:red;">${error.message}</p>`;
     });
 }
 
