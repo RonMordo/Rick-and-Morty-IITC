@@ -210,7 +210,16 @@ small,
   z-index: 2;
   position: relative;
 }
-
+.description {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
 footer {
   background: #232323;
   border-top: 1px solid #444;
@@ -253,6 +262,11 @@ footer {
   .char-info {
     color: white;
   }
+}
+
+.character-detail-page .flex-item:hover {
+  background: #afe3b3 !important;
+  scale: 1 !important;
 }
 
 .flex-item img {
@@ -306,4 +320,19 @@ footer {
   color: #000000;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
   outline: none;
+}
+
+.header-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
 }

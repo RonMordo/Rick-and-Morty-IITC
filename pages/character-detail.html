@@ -3,7 +3,76 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Character Detail</title>
+    <link rel="stylesheet" href="../styles/main.css" />
   </head>
-  <body></body>
+  <body class="character-detail-page">
+    <header>
+      <div class="header-title">
+        <img
+          src="../styles/rick-and-morty-flip-off-peeking-stickers-evergreen-kings-831482-removebg-preview.png"
+          alt="Rick and Morty Logo"
+          class="logo-img"
+        />
+        <span>Rick and Morty WIKI</span>
+      </div>
+      <nav>
+        <a href="characters.html">Characters</a>
+        <a href="episodes.html">Episodes</a>
+        <a href="locations.html">Locations</a>
+      </nav>
+    </header>
+    <main>
+      <section class="search-container">
+        <div class="search-gif">
+          <img src="../styles/portalGun.gif" alt="Rick and Morty Gif" />
+        </div>
+        <p class="search-par">
+          Search across the multiverse for your favorite character, location, or
+          episode...
+        </p>
+        <form>
+          <div class="search">
+            <input type="text" placeholder="Search" />
+            <button class="portal-btn" type="button" title="search"></button>
+          </div>
+        </form>
+      </section>
+      <h1>Character Details</h1>
+      <div class="char-container" id="character-detail">
+        <div class="char-image">
+          <img src="" alt="Character Image" id="character-img" />
+        </div>
+        <div class="char-info">
+          <h2 id="character-name"></h2>
+          <p>
+            <span class="info-label">Status:</span>
+            <span id="character-status"></span>
+          </p>
+          <p>
+            <span class="info-label">Species:</span>
+            <span id="character-species"></span>
+          </p>
+          <p>
+            <span class="info-label">Gender:</span>
+            <span id="character-gender"></span>
+          </p>
+          <p>
+            <span class="info-label">Origin:</span>
+            <span id="character-origin"></span>
+          </p>
+          <p>
+            <span class="info-label">Last Known Location:</span>
+            <span id="character-location"></span>
+          </p>
+          <p>
+            <span class="info-label">First Episode:</span>
+            <span id="character-first-episode"></span>
+          </p>
+        </div>
+      </div>
+    </main>
+    <footer>&copy; 2025 RON & Liel inc. All rights reserved.</footer>
+    <script type="module" src="../scripts/character-detail.js"></script>
+  </body>
 </html>

@@ -25,7 +25,7 @@ function updateUI() {
         <p>${character.status}</p>
         <p>${character.species}</p>
         <p>${character.location.name}</p>
-        <a href='${character.url}'>Info</a>
+        <a href='character-detail.html?id=${character.id}'>Info</a>
       </div>
     `;
     charContainer.appendChild(flexItem);

@@ -3,7 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Episode Detail</title>
+    <link rel="stylesheet" href="../styles/main.css" />
   </head>
-  <body></body>
+  <body>
+    <header>
+      <div class="header-title">
+        <img
+          src="../styles/rick-and-morty-flip-off-peeking-stickers-evergreen-kings-831482-removebg-preview.png"
+          alt="Rick and Morty Logo"
+          class="logo-img"
+        />
+        <span>Rick and Morty WIKI</span>
+      </div>
+      <nav>
+        <a href="characters.html">Characters</a>
+        <a href="episodes.html">Episodes</a>
+        <a href="locations.html">Locations</a>
+      </nav>
+    </header>
+    <main>
+      <section class="search-container">
+        <div class="search-gif">
+          <img src="../styles/portalGun.gif" alt="Rick and Morty Gif" />
+        </div>
+        <p class="search-par">
+          Search across the multiverse for your favorite character, location, or
+          episode...
+        </p>
+        <form>
+          <div class="search">
+            <input type="text" placeholder="Search" />
+            <button class="portal-btn" type="button" title="search"></button>
+          </div>
+        </form>
+      </section>
+      <h1>Episode Details</h1>
+      <div class="char-container" id="episode-detail"></div>
+    </main>
+    <footer>&copy; 2025 RON & Liel inc. All rights reserved.</footer>
+    <script type="module" src="../scripts/episode-detail.js"></script>
+  </body>
 </html>

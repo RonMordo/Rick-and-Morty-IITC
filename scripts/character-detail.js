@@ -1,41 +1,76 @@
-/**
- * Character Detail Page Script
- * Handles the display of detailed information for a single character
- */
+function getCharacterIdFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
+}
 
-/**
- * Loads and displays details for a specific character
- * @param {string} id - The character ID to load
- */
 function loadCharacterDetails(id) {
-  // TODO: Implement character detail loading
-  // 1. Show loading state
-  // 2. Fetch character data using the API module
-  // 3. Extract episode IDs from character.episode URLs
-  // 4. Fetch all episodes this character appears in
-  // 5. Update UI with character and episode data
-  // 6. Handle any errors
-  // 7. Hide loading state
-  throw new Error("loadCharacterDetails not implemented");
+  const detailContainer = document.getElementById("character-detail");
+  detailContainer.innerHTML = "<p>Loading...</p>";
+
+  fetch(`https://rickandmortyapi.com/api/character/${id}`)
+    .then((res) => {
+      if (!res.ok) throw new Error("Character not found");
+      return res.json();
+    })
+    .then((character) => {
+      const episodeIds = character.episode
+        .map((url) => url.split("/").pop())
+        .join(",");
+      return fetch(
+        `https://rickandmortyapi.com/api/episode/${episodeIds}`
+      )
+        .then((episodesRes) => episodesRes.json())
+        .then((episodes) => {
+          if (!Array.isArray(episodes)) episodes = [episodes];
+          updateUI(character, episodes);
+        });
+    })
+    .catch((err) => {
+      detailContainer.innerHTML = `<p style="color:red;">${err.message}</p>`;
+    });
 }
 
-/**
- * Updates the UI with character and episode data
- * @param {Object} character - The character data
- * @param {Array} episodes - Array of episode data
- */
 function updateUI(character, episodes) {
-  // TODO: Implement the UI update
-  // 1. Get the detail container element
-  // 2. Create character header with image and basic info
-  // 3. Add links to origin and current location
-  // 4. Create episodes section with all episodes the character appears in
-  // 5. Handle empty states and errors
-  throw new Error("updateUI not implemented");
+  const detailContainer = document.getElementById("character-detail");
+  detailContainer.innerHTML = `
+    <div style="display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start;">
+      <div class="flex-item" style="min-width:260px;max-width:320px;">
+        <img src="${character.image}" alt="${
+    character.name
+  }" style="width:100%;border-radius:8px;" />
+        <div class="char-info">
+          <h2>${character.name}</h2>
+          <p>Status: ${character.status}</p>
+          <p>Species: ${character.species}</p>
+          <p>Gender: ${character.gender}</p>
+          <p>Origin: ${character.origin.name}</p>
+          <p>Location: ${character.location.name}</p>
+        </div>
+      </div>
+      <div class="flex-item" style="flex:1;min-width:220px;">
+        <h3>Episodes</h3>
+        <ul style="list-style:none;padding:0;">
+          ${episodes
+            .map(
+              (ep) => `
+            <li style="margin-bottom:8px;">
+              <strong>${ep.episode}</strong>: ${ep.name} <span style="color:#aaa;">(${ep.air_date})</span>
+            </li>
+          `
+            )
+            .join("")}
+        </ul>
+      </div>
+    </div>
+  `;
 }
 
-// TODO: Initialize the page
-// 1. Get character ID from URL parameters
-// 2. Validate the ID
-// 3. Load character details if ID is valid
-// 4. Show error if ID is invalid or missing
+document.addEventListener("DOMContentLoaded", () => {
+  const id = getCharacterIdFromUrl();
+  if (!id) {
+    document.getElementById("character-detail").innerHTML =
+      "<p style='color:red;'>No character ID provided.</p>";
+    return;
+  }
+  loadCharacterDetails(id);
+});
