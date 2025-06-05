@@ -1,9 +1,3 @@
-/**
- * Characters Page Script
- * Handles the display and interaction of the characters list page
- */
-
-// State management for the characters page
 const state = {
   page: 1,
   data: null,
@@ -31,14 +25,27 @@ function updateUI(data) {
 /**
  * Loads character data from the API
  */
+
 function loadCharacters() {
-  // TODO: Implement character loading
-  // 1. Show loading state
-  // 2. Fetch character data using the API module
-  // 3. Update UI with the results
-  // 4. Handle any errors
-  // 5. Hide loading state
-  throw new Error("loadCharacters not implemented");
+  const url = `https://rickandmortyapi.com/api/character`;
+
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("No characters found");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      state.data = data;
+      console.log(data);
+
+      updateUI(data);
+    })
+    .catch((error) => {
+      const grid = document.getElementsByClassName("grid");
+      grid.innerHTML = `<p style="color:red;">${error.message}</p>`;
+    });
 }
 
 // TODO: Add event listeners
@@ -46,3 +53,4 @@ function loadCharacters() {
 // 2. Next page button click
 // 3. Search input with debounce
 // 4. Call loadCharacters() on page load
+document.addEventListener("DOMContetLoaded", loadCharacters);

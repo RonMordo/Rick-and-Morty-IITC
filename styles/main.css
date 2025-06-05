@@ -74,6 +74,7 @@ form {
   background: #232323;
   border-radius: 40px;
   padding: 10px 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 
 .search input[type="text"] {
@@ -85,7 +86,8 @@ form {
   background: #181818;
   color: #17da41;
   outline: none;
-  transition: 0.2s;
+
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 .search input[type="text"]::placeholder {
@@ -151,12 +153,10 @@ footer {
   border: none;
   cursor: pointer;
   transition: transform 0.2s;
-
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   margin-left: 8px;
 }
 
 .portal-btn:hover {
   transform: scale(0.85);
-
-  background-color: #222;
 }
