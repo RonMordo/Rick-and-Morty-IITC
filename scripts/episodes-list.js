@@ -5,21 +5,23 @@ const episodeData = {
 };
 
 function updateUI() {
-  const grid = document.querySelector(".grid-2x3");
-  grid.innerHTML = "";
+  const episodesContainer = document.querySelector(".content-container");
+  episodesContainer.innerHTML = "";
   if (!episodeData.episodesData) return;
   episodeData.episodesData.forEach((episode) => {
-    const gridItem = document.createElement("div");
-    gridItem.className = "grid-item";
-    gridItem.innerHTML = `
-      <div class='char-info'>
+    const flexItem = document.createElement("div");
+    flexItem.className = "flex-item";
+    flexItem.innerHTML = `
+    <a href='episode-detail.html?id=${episode.id}'>  
+      <div class='info'>
         <p><strong>${episode.name}</strong></p>
         <p>Episode: ${episode.episode}</p>
         <p>Air Date: ${episode.air_date}</p>
         <p>Characters: ${episode.characters.length}</p>
       </div>
+    </a>
     `;
-    grid.appendChild(gridItem);
+    episodesContainer.appendChild(flexItem);
   });
 }
 
@@ -37,10 +39,11 @@ function loadEpisodes() {
       episodeData.episodesData = data.results;
       episodeData.info = data.info;
       updateUI();
+      console.log(episodeData);
     })
     .catch((error) => {
-      const grid = document.querySelector(".grid-2x3");
-      grid.innerHTML = `<p style="color:red;">${error.message}</p>`;
+      const episodesContainer = document.querySelector("#episodes-container");
+      episodesContainer.innerHTML = `<p style="color:red;">${error.message}</p>`;
     });
 }
 

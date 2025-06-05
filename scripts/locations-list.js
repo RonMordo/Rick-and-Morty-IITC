@@ -5,21 +5,21 @@ const locationData = {
 };
 
 function updateUI() {
-  const grid = document.querySelector(".grid-2x3");
-  grid.innerHTML = "";
+  const locationsContainer = document.querySelector(".content-container");
+  locationsContainer.innerHTML = "";
   if (!locationData.locationsData) return;
   locationData.locationsData.forEach((location) => {
-    const gridItem = document.createElement("div");
-    gridItem.className = "grid-item";
-    gridItem.innerHTML = `
-      <div class='char-info'>
+    const flexItem = document.createElement("div");
+    flexItem.className = "flex-item";
+    flexItem.innerHTML = `
+      <div class='info'>
         <p><strong>${location.name}</strong></p>
         <p>Type: ${location.type}</p>
         <p>Dimension: ${location.dimension}</p>
         <p>Residents: ${location.residents.length}</p>
       </div>
     `;
-    grid.appendChild(gridItem);
+    locationsContainer.appendChild(flexItem);
   });
 }
 

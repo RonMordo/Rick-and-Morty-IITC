@@ -230,11 +230,11 @@ footer {
   margin-top: 32px;
 }
 
-.char-container {
+.content-container {
   display: flex;
   flex-wrap: wrap;
   gap: 24px 32px;
-  width: 90%;
+  width: 80%;
   justify-items: flex-start;
   align-items: center;
   margin: 1rem auto;
@@ -259,7 +259,7 @@ footer {
   background: url("portal-rick-and-morty.gif") no-repeat center center;
   background-size: cover;
   scale: 1.1;
-  .char-info {
+  .info {
     color: white;
   }
 }
@@ -274,7 +274,14 @@ footer {
   border-radius: 40px;
 }
 
-.char-info {
+.episode-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -283,6 +290,7 @@ footer {
   padding: 0.5rem;
   border-radius: 15px;
   width: 100%;
+  min-height: 270px;
 }
 
 .portal-btn {

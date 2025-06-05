@@ -13,14 +13,14 @@ const pageData = {
  * @param {Object} data.info - Pagination information
  */
 function updateUI() {
-  const charContainer = document.querySelector(".char-container");
+  const charContainer = document.querySelector(".content-container");
   charContainer.innerHTML = "";
   pageData.charactersData.forEach((character) => {
     const flexItem = document.createElement("div");
     flexItem.className = "flex-item";
     flexItem.innerHTML = `    
       <img src='${character.image}'/>
-      <div class='char-info'>
+      <div class='info'>
         <p>${character.name}</p>
         <p>${character.status}</p>
         <p>${character.species}</p>
