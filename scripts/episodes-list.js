@@ -10,7 +10,7 @@ function updateUI() {
   if (!episodeData.episodesData) return;
   episodeData.episodesData.forEach((episode) => {
     const flexItem = document.createElement("div");
-    flexItem.className = "flex-item";
+    flexItem.classList = "flex-item animated";
     flexItem.innerHTML = `
     <a href='episode-detail.html?id=${episode.id}'>  
       <div class='info'>

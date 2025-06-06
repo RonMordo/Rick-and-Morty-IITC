@@ -12,17 +12,21 @@ let locationSearchInfo = null;
 function updateUI() {
   const locationsContainer = document.querySelector(".content-container");
   locationsContainer.innerHTML = "";
+  console.log(locationData);
+
   if (!locationData.locationsData) return;
   locationData.locationsData.forEach((location) => {
     const flexItem = document.createElement("div");
-    flexItem.className = "flex-item";
+    flexItem.classList = "flex-item animated";
     flexItem.innerHTML = `
+    <a href=location-detail.html?id=${location.id}>
       <div class='info'>
         <p><strong>${location.name}</strong></p>
         <p>Type: ${location.type}</p>
         <p>Dimension: ${location.dimension}</p>
         <p>Residents: ${location.residents.length}</p>
       </div>
+    </a>
     `;
     locationsContainer.appendChild(flexItem);
   });

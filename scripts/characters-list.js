@@ -16,17 +16,17 @@ function updateUI() {
   charContainer.innerHTML = "";
   (pageData.charactersData || []).forEach((character) => {
     const flexItem = document.createElement("div");
-    flexItem.className = "flex-item";
+    flexItem.classList = "flex-item animated";
     flexItem.innerHTML = `
-      <a href='character-detail.html?id=${character.id}' style="text-decoration:none; color:inherit; display:block; height:100%; width:100%;">
-        <img src='${character.image}'/>
-        <div class='info'>
-          <p>${character.name}</p>
-          <p>${character.status}</p>
-          <p>${character.species}</p>
-          <p>${character.location.name}</p>
-        </div>
-      </a>
+    <a href='character-detail.html?id=${character.id}'>    
+      <img src='${character.image}'/>
+      <div class='info'>
+        <p>Name: ${character.name}</p>
+        <p>Status: ${character.status}</p>
+        <p>Species: ${character.species}</p>
+        <p>Location: ${character.location.name}</p>
+      </div>
+    </a>
     `;
     charContainer.appendChild(flexItem);
   });

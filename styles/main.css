@@ -119,7 +119,7 @@ nav {
   justify-content: flex-end;
   gap: 16px;
   padding: 16px 24px;
-  width: 80%;
+  width: 50%;
 }
 
 nav a {
@@ -127,11 +127,14 @@ nav a {
   background: #2b2a2a;
   border-radius: 24px;
   padding: 8px 22px;
-  font-size: 1.08rem;
+  font-size: clamp(0.8rem, 5vw, 1rem);
   margin-left: 8px;
   border: none;
   text-decoration: none;
   display: inline-block;
+  max-width: 150px;
+  text-align: center;
+  min-width: 100px;
 }
 
 nav a:hover,
@@ -154,6 +157,7 @@ form {
   margin: 24px 0;
   z-index: 2;
   position: relative;
+  width: 400px;
 }
 
 .search {
@@ -172,6 +176,10 @@ form {
   background-color: rgb(77, 70, 105);
   padding-block: 1rem;
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .search input[type="text"] {
@@ -193,9 +201,9 @@ form {
 
 .search-gif {
   position: absolute;
-  top: 0;
-  left: 3rem;
-  width: 20%;
+  top: 2.5rem;
+  left: 5rem;
+  width: 200px;
   background-color: transparent;
   z-index: 1;
 }
@@ -235,24 +243,78 @@ footer {
   flex-wrap: wrap;
   gap: 24px 32px;
   width: 80%;
-  justify-items: flex-start;
+  justify-content: center;
   align-items: center;
   margin: 1rem auto;
 }
 
 .flex-item {
+  position: relative;
   background: #afe3b3;
   border-radius: 8px;
-  width: 31%;
-  min-height: 480px;
+  width: 280px;
+  min-height: 490px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.5rem;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: 1.3rem;
   color: #444;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 1px 2px 1px white;
+}
+
+.flex-item.animated:hover {
+  transform: scale(1.05);
+  color: white;
+}
+
+.flex-item.animated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("portal-rick-and-morty.gif") no-repeat center center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.flex-item.animated:hover::before {
+  opacity: 1;
+}
+
+.flex-item.animated > * {
+  position: relative;
+  z-index: 1;
+}
+
+.flex-item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 90%;
+}
+
+/* .flex-item {
+  background: #afe3b3;
+  border-radius: 8px;
+  width: 31%;
+  min-height: 490px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  color: #444;
+  transition: background, ;
 }
 
 .flex-item:hover {
@@ -262,7 +324,7 @@ footer {
   .info {
     color: white;
   }
-}
+} */
 
 .character-detail-page .flex-item:hover {
   background: #afe3b3 !important;
@@ -296,6 +358,14 @@ footer {
   min-height: 270px;
 }
 
+.episode-characters:hover {
+  transform: scale(1.3);
+}
+
+.flex-item ul .episode-id {
+  display: inline;
+}
+
 .portal-btn {
   width: 48px;
   height: 48px;
@@ -319,7 +389,7 @@ footer {
   background: #000000;
   border-radius: 24px;
   padding: 8px 22px;
-  font-size: 1 rem;
+  font-size: 1rem;
   margin: 0 8px;
   display: inline-block;
   cursor: pointer;
@@ -336,14 +406,43 @@ footer {
 .header-title {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 5vw, 3rem);
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 50%;
+}
+
+.header-title span {
+  display: inline-block;
 }
 
 .logo-img {
   width: 200px;
   height: 200px;
   object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .search-gif {
+    display: none;
+  }
+  .header-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 750px) {
+  nav {
+    flex-direction: column;
+  }
+  .header-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  h1 {
+    font-size: 3rem;
+  }
 }

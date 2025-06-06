@@ -53,19 +53,24 @@ function updateUI(episode, characters) {
   //    - Make the card link to the character detail page
   // 5. Handle empty states (no characters)
   const contentContainer = document.querySelector(".content-container");
+  const title = document.querySelector("#page-title");
+  const subTitle = document.querySelector("#page-action");
+  subTitle.textContent = "Episode characters";
+  title.textContent = `${episode.name}`;
   contentContainer.innerHTML = "";
   characters.forEach((character) => {
     const flexItem = document.createElement("div");
-    flexItem.className = "flex-item";
+    flexItem.classList = "flex-item animated";
     flexItem.innerHTML = `
+      <a href='character-detail.html?id=${character.id}'>    
       <img src='${character.image}'/>
       <div class='info'>
-        <p>${character.name}</p>
-        <p>${character.status}</p>
-        <p>${character.species}</p>
-        <p>${character.location.name}</p>
-        <a href='${character.url}'>Info</a>
+        <p>Name: ${character.name}</p>
+        <p>Status: ${character.status}</p>
+        <p>Species: ${character.species}</p>
+        <p>Location: ${character.location.name}</p>
       </div>
+    </a>
     `;
     contentContainer.appendChild(flexItem);
   });

@@ -16,9 +16,7 @@ function loadCharacterDetails(id) {
       const episodeIds = character.episode
         .map((url) => url.split("/").pop())
         .join(",");
-      return fetch(
-        `https://rickandmortyapi.com/api/episode/${episodeIds}`
-      )
+      return fetch(`https://rickandmortyapi.com/api/episode/${episodeIds}`)
         .then((episodesRes) => episodesRes.json())
         .then((episodes) => {
           if (!Array.isArray(episodes)) episodes = [episodes];
@@ -44,17 +42,19 @@ function updateUI(character, episodes) {
           <p>Species: ${character.species}</p>
           <p>Gender: ${character.gender}</p>
           <p>Origin: ${character.origin.name}</p>
-          <p>Location: ${character.location.name}</p>
+          <p>Location: <a style='display:inline; color: gray'; href='location-detail.html?id=${character.location.url
+            .split("/")
+            .at(-1)}'>${character.location.name}</a></p>
         </div>
       </div>
-      <div class="flex-item" style="flex:1;min-width:220px;">
+      <div class="flex-item" style="flex:1;min-width:220px;justify-content: flex-start;">
         <h3>Episodes</h3>
         <ul style="list-style:none;padding:0;">
           ${episodes
             .map(
               (ep) => `
-            <li style="margin-bottom:8px;">
-              <strong>${ep.episode}</strong>: ${ep.name} <span style="color:#aaa;">(${ep.air_date})</span>
+            <li style="margin-bottom:8px;" class='episode-characters'>
+              <a class='episode-id' href='episode-detail.html?id=${ep.id}'><strong>${ep.episode}</strong>: ${ep.name} <span style="color:#aaa;">(${ep.air_date})</span></a>
             </li>
           `
             )
