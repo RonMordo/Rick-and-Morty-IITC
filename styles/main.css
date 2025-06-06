@@ -272,6 +272,9 @@ footer {
 .flex-item img {
   width: 50%;
   border-radius: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .episode-header {
